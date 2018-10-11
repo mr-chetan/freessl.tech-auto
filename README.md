@@ -30,13 +30,13 @@ This app/client issues and installs free SSL certificates automatically in <b>sh
 
 # Minimum System Requirements
 
-1.    Linux hosting: (this client/app is NOT compatible with Windows server)
+1.    Linux hosting (this client/app is NOT compatible with Windows server)
 2.    PHP 5.4
-3.    MySQL or MariaDB version???
+3.    MySQL 5 or MariaDB 10
 4.    OpenSSL extension
 5.    Curl extension
 6.    MySQLi extension
-7.	  PHP directive allow_url_fopen = On
+7.	   PHP directive allow_url_fopen = On
 8.    For automatic SSL installation, you need the SSL installation feature enabled for your cPanel.
 
 <b>Case 1:</b> This app uses cPanel API to install SSL certificate. So, if your web hosting control panel is NOT cPanel, but you have SSL installation option, this app doesn't install SSL automatically.  You can install the free SSL certificate manually.
