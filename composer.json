@@ -1,5 +1,5 @@
 {
-    "name": "SpeedUpWebsite/freessl.tech-auto",
+    "name": "speed-up-website/freessl.tech-auto",
     "description": "A PHP app/client for complete automation to issue/renew and install Let's Encrypt Free SSL certificate in cPanel shared hosting. This app/client also works on non-cPanel hosting except auto-installation.",
     "type": "project",
     "license": "BSD 3-Clause 'New' or 'Revised' License",
