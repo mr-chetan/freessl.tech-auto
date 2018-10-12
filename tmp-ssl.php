@@ -217,6 +217,8 @@
                 //Key size of the SSL
                 //@value integer
                 'key_size' => 2048,
+                
+                'server_ip' => isset($_SERVER['SERVER_ADDR']) ? $_SERVER['SERVER_ADDR'] : null,
 
                 //Set this domain details below
                 //@value array
@@ -245,6 +247,7 @@
                         'api_credential' => '', //API secret. Or key, if api_identifier is an email id   //@value string
                         'dns_provider_takes_longer_to_propagate' => true, //By default this app waits 2 minutes before attempt to verify DNS-01 challenge. But if your DNS provider takes more time to propagate out, set this true. Please keep in mind, depending on the propagation status of your DNS server, this settings may put the app waiting for hours.  //@value boolean
                         'domains' => [], //Domains registered with this DNS provider   //@value array
+                        'server_ip' => isset($_SERVER['SERVER_ADDR']) ? $_SERVER['SERVER_ADDR'] : null
                     ],
                 ],
             ]; ?>
