@@ -153,9 +153,9 @@ class Layout
 </section>
 <!-- Footer start -->
 <div class="text-center">   
-	<p>&copy; Copyright 2018 <a href="https://www.facebook.com/anindyasm" target="_blank">Anindya Sundar Mandal</a>, All rights reserved.</p>
+	<p>&copy; Copyright 2018 <a href="https://www.linkedin.com/in/anindyasm" target="_blank">Anindya Sundar Mandal</a>, All rights reserved.</p>
    
-	<p>Powered by <a href="https://letsencrypt.org" target="_blank">Let's Encrypt</a>, <a href="https://speedify.tech" target="_blank">SpeedUpWebsite.info</a> and <a href="https://getwww.me" target="_blank">GetWww.me</a>.</p> 
+	<p>Powered by <a href="https://speedify.tech" target="_blank">SpeedUpWebsite.info</a>, <a href="https://getwww.me" target="_blank">GetWww.me</a> and <a href="https://letsencrypt.org" target="_blank">Let's Encrypt</a>.</p> 
 </div>
 </section>
     <!--main content end-->
