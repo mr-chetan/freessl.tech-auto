@@ -918,9 +918,7 @@ if (\defined('APP_SETTINGS_PATH')) {
                   <div class="panel-content">Following domains/add-on domains or sub-domains are being hosted on your cPanel. 
                   If you want SSL certificate for all of them, please skip these settings.</div>
                   
-                  <div class="panel-content "><strong>If there is any domain, which is expired or NOT pointed to this hosting at present but you still prefer not to 
-                  delete it from this hosting, please exclude that domain/sub-domain by selecting here. 
-                  Otherwise, this app will throw an error.</strong></div>
+                  <div class="panel-content "><strong>Do you have any domain that currently not pointed to this hosting? Please either delete it from the cPanel or exclude it by selecting here. Otherwise, this app will throw an error.</strong></div>
                 </div>
               
                 <div class="form">
