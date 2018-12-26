@@ -57,7 +57,7 @@ class cPanel
 
         //Validate output
         if (empty($domains_data)) {
-            $this->logger->log('The domains_data cURL call did not return valid JSON:');
+            $this->logger->log("Oops! We can't connect to your cPanel. Please recheck the cPanel settings and provide correct credentials.");
             echo '<pre>';
             print_r($domains_data);
             echo '</pre>';
