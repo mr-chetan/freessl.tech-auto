@@ -13,6 +13,10 @@
  * @since      Class available since Release 1.0.0
  */
 
+    if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+        die("Unfortunately, this app is not compatible with Windows. It works on Linux hosting.");
+    }
+
     //Display all error
     error_reporting(E_ALL);
 
