@@ -18,6 +18,10 @@
         session_start();
     }
 
+    if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+        die("Unfortunately, this app is not compatible with Windows. It works on Linux hosting.");
+    }
+
     //Display all error
     error_reporting(E_ALL);
 
