@@ -66,7 +66,13 @@ class Controller
                 $now = new DateTime();
                 $expiry = new DateTime('@'.$ssl_cert_data['validTo_time_t']);
                 $interval = (int) $now->diff($expiry)->format('%R%a');
-
+                
+                $this->logger->log('Existing SSL for '.$domain.' found at this location: '.$ssl_cert_file);
+                
+                $this->logger->log('Existing SSL expires in '.$interval.' days');
+                
+                $this->logger->log("You have choosen to renew SSL ${days_before_expiry_to_renew_ssl} days before the expiry date");
+                
                 if ($interval <= $days_before_expiry_to_renew_ssl) {
                     return true;
                 }
