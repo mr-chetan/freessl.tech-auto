@@ -216,7 +216,7 @@
 
                 //Are you using cloudflare or any other CDN?
                 //@value boolean
-                'using_cdn' => false,
+                'using_cdn' => true,
 
                 //Key size of the SSL
                 //@value integer
