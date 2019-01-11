@@ -1848,7 +1848,7 @@ if ('POST' === $_SERVER['REQUEST_METHOD']) {
                 if (false === strpos($output, 'MAILTO=')) {
                     //$output doesn't contain it. add 'MAILTO="user@gmail.com"' at beginning of $output
 
-                    $output = 'MAILTO="anindya.humanist@gmail.com"\n'.$output;
+                    $output = 'MAILTO="'.$email.'"\n'.$output;
                 }
             } else {
                 $email_err = 'Please enter a valid email.';
