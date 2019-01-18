@@ -244,6 +244,17 @@ class FreeSSLAuto
 
         //Change Let's Encrypt account key / Account key roll-over
         if (KEY_CHANGE) {
+            
+            //if DNS provider is NOT set, use the following settings to avoid error            
+            if (!isset($this->appConfig['dns_provider'])) {
+                $this->appConfig['dns_provider'][] = [
+                    'name' => false,
+                    'dns_provider_takes_longer_to_propagate' => true,
+                    'domains' => [],
+                    'server_ip' => $this->appConfig['server_ip']
+                ];
+            }
+            
             //call the appropriate class name according to the ACME version
             if (1 === $this->appConfig['acme_version']) {
                 $freessl = new AcmeV1($homedir.DS.$this->appConfig['certificate_directory'], $this->appConfig['admin_email'], $this->appConfig['is_staging'], 'http-01', $this->appConfig['key_size']);
@@ -261,6 +272,17 @@ class FreeSSLAuto
 
         //Revoke SSL
         if (REVOKE_CERT) {
+            
+            //if DNS provider is NOT set, use the following settings to avoid error            
+            if (!isset($this->appConfig['dns_provider'])) {
+                $this->appConfig['dns_provider'][] = [
+                    'name' => false,
+                    'dns_provider_takes_longer_to_propagate' => true,
+                    'domains' => [],
+                    'server_ip' => $this->appConfig['server_ip']
+                ];
+            }
+            
             //call the appropriate class name according to the ACME version
             if (1 === $this->appConfig['acme_version']) {
                 $freessl = new AcmeV1($homedir.DS.$this->appConfig['certificate_directory'], $this->appConfig['admin_email'], $this->appConfig['is_staging'], 'http-01', $this->appConfig['key_size']);
