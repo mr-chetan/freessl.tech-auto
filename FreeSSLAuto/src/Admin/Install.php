@@ -57,7 +57,7 @@ class Install
         if ('POST' === $_SERVER['REQUEST_METHOD']) {
             $token = trim($_POST['csrf']);
             $token = filter_var($token, FILTER_SANITIZE_STRING);
-
+            
             $csrfVerified = $this->factory->verifyCsrfToken('install-step-1', $token);
 
             if (!$csrfVerified) {
@@ -197,7 +197,7 @@ class Install
             </div>
             
             <div class="input-group <?php echo (!empty($csrf_err)) ? 'has-error' : ''; ?>">
-              <input type="hidden" name="csrf" value="<?php echo $this->factory->getCsrfToken('install-step-1', true); ?>">
+              <input type="hidden" name="csrf" value="<?php echo $this->factory->getCsrfToken('install-step-1'); ?>">
               <span style="color: red;"><?php echo isset($csrf_err) ? $csrf_err : null; ?></span>
             </div>
             
@@ -415,7 +415,7 @@ CONFIG;
             </div>
             
             <div class="input-group <?php echo (!empty($csrf_err)) ? 'has-error' : ''; ?>">
-              <input type="hidden" name="csrf" value="<?php echo $this->factory->getCsrfToken('install-step-2', true); ?>">
+              <input type="hidden" name="csrf" value="<?php echo $this->factory->getCsrfToken('install-step-2'); ?>">
               <span style="color: red;"><?php echo isset($csrf_err) ? $csrf_err : null; ?></span>
             </div>
             

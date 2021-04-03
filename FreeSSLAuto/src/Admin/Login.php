@@ -167,7 +167,7 @@ class Login
         </div>
                 
         <div class="input-group <?php echo (!empty($csrf_err)) ? 'has-error' : ''; ?>">
-          <input type="hidden" name="csrf" value="<?php echo $this->factory->getCsrfToken('login', true); ?>">
+          <input type="hidden" name="csrf" value="<?php echo $this->factory->getCsrfToken('login'); ?>">
           <span style="color: red;"><?php echo isset($csrf_err) ? $csrf_err : null; ?></span>
         </div>
                                 
@@ -366,7 +366,7 @@ class Login
         </div>
         
         <div class="input-group <?php echo (!empty($csrf_err)) ? 'has-error' : ''; ?>">
-          <input type="hidden" name="csrf" value="<?php echo $this->factory->getCsrfToken('forgot-password', true); ?>">
+          <input type="hidden" name="csrf" value="<?php echo $this->factory->getCsrfToken('forgot-password'); ?>">
           <span style="color: red;"><?php echo isset($csrf_err) ? $csrf_err : null; ?></span>
         </div>
                         
@@ -562,7 +562,7 @@ class Login
         </div>
         
         <div class="input-group <?php echo (!empty($csrf_err)) ? 'has-error' : ''; ?>">
-          <input type="hidden" name="csrf" value="<?php echo $this->factory->getCsrfToken('reset-password', true); ?>">
+          <input type="hidden" name="csrf" value="<?php echo $this->factory->getCsrfToken('reset-password'); ?>">
           <span style="color: red;"><?php echo isset($csrf_err) ? $csrf_err : null; ?></span>
         </div>
                       

@@ -12,7 +12,7 @@ This app/client issues and installs free SSL certificates automatically in <b>sh
 
 1.    You can install and configure this client/app using your favorite web browser.
 2.    Option to generate a free SSL certificate before you install the app. You get this option if you attempt to install the app over HTTP. So, no need to enter database and login credentials on an insecure page during installation of this app.
-3.    Both Let’s Encrypt ACME version 1 and 2 API supported.
+3.    Let’s Encrypt ACME version 2 API supported.
 4.    Get WildCard SSL certificate for free!
 5.    This app installs free SSL certificate automatically on cPanel shared hosting.
 6.    Choose the number of days before the expiry date you want to renew the SSL. The default value is 30, which is recommended by Let's Encrypt.
@@ -31,12 +31,12 @@ This app/client issues and installs free SSL certificates automatically in <b>sh
 # Minimum System Requirements
 
 1.    Linux hosting (this client/app is NOT compatible with Windows server)
-2.    PHP 5.4
+2.    PHP 5.6
 3.    MySQL 5 or MariaDB 10
 4.    OpenSSL extension
 5.    Curl extension
 6.    MySQLi extension
-7.	   PHP directive allow_url_fopen = On
+7.    PHP directive allow_url_fopen = On
 8.    For automatic SSL installation, you need the SSL installation feature enabled for your cPanel.
 
 <b>Case 1:</b> This app uses cPanel API to install SSL certificate. So, if your web hosting control panel is NOT cPanel, but you have SSL installation option, this app doesn't install SSL automatically.  You can install the free SSL certificate manually.

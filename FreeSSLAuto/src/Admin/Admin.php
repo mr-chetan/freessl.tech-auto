@@ -327,8 +327,14 @@ $countries = file_get_contents(__DIR__.'/country_code.json');
 
             // SANITIZE user inputs
 
-            $app_settings['acme_version'] = (int) filter_var($_POST['acme_version'], FILTER_SANITIZE_NUMBER_INT);
+            if (isset($_POST['free_ssl_provider_ca'])) {
+                $app_settings['free_ssl_provider_ca'] = $this->factory->sanitize_string($_POST['free_ssl_provider_ca']);
+            }
+            
+            //$app_settings['acme_version'] = (int) filter_var($_POST['acme_version'], FILTER_SANITIZE_NUMBER_INT);
 
+            $app_settings['acme_version'] = FSA_DEFAULT_ACME_VERSION;
+            
             $app_settings['use_wildcard'] = (bool) filter_var($_POST['use_wildcard'], FILTER_SANITIZE_NUMBER_INT);
 
             if (1 === $app_settings['acme_version'] && $app_settings['use_wildcard']) {
@@ -473,15 +479,14 @@ ENTRY;
                   <form class="form-validate form-horizontal " id="settings-basic" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>?action=settings-basic">
                     
                     <div class="form-group">
-                    <label class="control-label col-lg-6" for="acme_version">Let's Encrypt ACME version you want to use</label>
-                    <div class="col-lg-6">
-                      <select class="form-control m-bot15" name="acme_version">
-                      						  <option<?php echo (isset($app_settings['acme_version']) && 2 === $app_settings['acme_version']) ? ' selected' : null; ?>>2</option>
-                                              <option<?php echo (isset($app_settings['acme_version']) && 1 === $app_settings['acme_version']) ? ' selected' : null; ?>>1</option>                                              
-                                           </select>
-                      
+                        <label class="control-label col-lg-6" for="acme_version">ACME version (2 is better)</label>
+                        <div class="col-lg-6">
+                            <select class="form-control m-bot15" name="acme_version" disabled>
+                                    <option<?php echo (isset($app_settings['acme_version']) && 2 === $app_settings['acme_version']) ? ' selected' : null; ?>>2</option>
+                                    <option<?php echo (isset($app_settings['acme_version']) && 1 === $app_settings['acme_version']) ? ' selected' : null; ?>>1</option>                                              
+                            </select>                      
                     	</div>
-                  	</div>
+                    </div>
                   	
                   	<div class="form-group <?php echo (!empty($use_wildcard_err)) ? 'has-error' : ''; ?>">
                     <label class="control-label col-lg-6" for="use_wildcard">Do you want to use wildcard SSL instead of separate SSL for each sub-domains?</label>
@@ -637,7 +642,7 @@ ENTRY;
                     </div>
                     
                     <div class="input-group <?php echo (!empty($csrf_err)) ? 'has-error' : ''; ?>">
-                      <input type="hidden" name="csrf" value="<?php echo $this->factory->getCsrfToken('settings-basic', true); ?>">
+                      <input type="hidden" name="csrf" value="<?php echo $this->factory->getCsrfToken('settings-basic'); ?>">
                       <span style="color: red;"><?php echo isset($csrf_err) ? $csrf_err : null; ?></span>
                     </div>
                     
@@ -819,7 +824,7 @@ if (\defined('APP_SETTINGS_PATH')) {
                     </div>
                     
                     <div class="input-group <?php echo (!empty($csrf_err)) ? 'has-error' : ''; ?>">
-                      <input type="hidden" name="csrf" value="<?php echo $this->factory->getCsrfToken('settings-cpanel', true); ?>">
+                      <input type="hidden" name="csrf" value="<?php echo $this->factory->getCsrfToken('settings-cpanel'); ?>">
                       <span style="color: red;"><?php echo isset($csrf_err) ? $csrf_err : null; ?></span>
                     </div>
                     
@@ -954,7 +959,7 @@ if (\defined('APP_SETTINGS_PATH')) {
         } ?>
                     
                     <div class="input-group <?php echo (!empty($csrf_err)) ? 'has-error' : ''; ?>">
-                      <input type="hidden" name="csrf" value="<?php echo $this->factory->getCsrfToken('cpanel-domains-to-exclude', true); ?>">
+                      <input type="hidden" name="csrf" value="<?php echo $this->factory->getCsrfToken('cpanel-domains-to-exclude'); ?>">
                       <span style="color: red;"><?php echo isset($csrf_err) ? $csrf_err : null; ?></span>
                     </div>
                     
@@ -1239,7 +1244,7 @@ if (\defined('APP_SETTINGS_PATH')) {
                     <input type="hidden" name="id" value="<?php echo isset($id) ? $id : null; ?>"> 
                     
                     <div class="input-group <?php echo (!empty($csrf_err)) ? 'has-error' : ''; ?>">
-                      <input type="hidden" name="csrf" value="<?php echo $this->factory->getCsrfToken('add-domain', true); ?>">
+                      <input type="hidden" name="csrf" value="<?php echo $this->factory->getCsrfToken('add-domain'); ?>">
                       <span style="color: red;"><?php echo isset($csrf_err) ? $csrf_err : null; ?></span>
                     </div>                  
                     
@@ -1743,7 +1748,7 @@ if (\defined('APP_SETTINGS_PATH')) {
                     <input type="hidden" name="id" value="<?php echo isset($id) ? $id : null; ?>">                   
                     
                     <div class="input-group <?php echo (!empty($csrf_err)) ? 'has-error' : ''; ?>">
-                      <input type="hidden" name="csrf" value="<?php echo $this->factory->getCsrfToken('add-dns-provider', true); ?>">
+                      <input type="hidden" name="csrf" value="<?php echo $this->factory->getCsrfToken('add-dns-provider'); ?>">
                       <span style="color: red;"><?php echo isset($csrf_err) ? $csrf_err : null; ?></span>
                     </div>
                     
@@ -1978,7 +1983,7 @@ if ('POST' === $_SERVER['REQUEST_METHOD']) {
                     </div>
                     
                     <div class="input-group <?php echo (!empty($csrf_err)) ? 'has-error' : ''; ?>">
-                      <input type="hidden" name="csrf" value="<?php echo $this->factory->getCsrfToken('add-cron', true); ?>">
+                      <input type="hidden" name="csrf" value="<?php echo $this->factory->getCsrfToken('add-cron'); ?>">
                       <span style="color: red;"><?php echo isset($csrf_err) ? $csrf_err : null; ?></span>
                     </div>
                                        
@@ -2156,7 +2161,7 @@ if (\defined('APP_SETTINGS_PATH')) {
             } ?>
                     
                     <div class="input-group <?php echo (!empty($csrf_err)) ? 'has-error' : ''; ?>">
-                      <input type="hidden" name="csrf" value="<?php echo $this->factory->getCsrfToken('revoke-ssl', true); ?>">
+                      <input type="hidden" name="csrf" value="<?php echo $this->factory->getCsrfToken('revoke-ssl'); ?>">
                       <span style="color: red;"><?php echo isset($csrf_err) ? $csrf_err : null; ?></span>
                     </div>
                     
@@ -2373,7 +2378,7 @@ if ('POST' === $_SERVER['REQUEST_METHOD']) {
                     </div>
                     
                     <div class="input-group <?php echo (!empty($csrf_err)) ? 'has-error' : ''; ?>">
-                      <input type="hidden" name="csrf" value="<?php echo $this->factory->getCsrfToken('change-password', true); ?>">
+                      <input type="hidden" name="csrf" value="<?php echo $this->factory->getCsrfToken('change-password'); ?>">
                       <span style="color: red;"><?php echo isset($csrf_err) ? $csrf_err : null; ?></span>
                     </div>
                     
@@ -2642,7 +2647,7 @@ if ('POST' === $_SERVER['REQUEST_METHOD']) {
                     </div>
                     
                     <div class="input-group <?php echo (!empty($csrf_err)) ? 'has-error' : ''; ?>">
-                      <input type="hidden" name="csrf" value="<?php echo $this->factory->getCsrfToken('update-profile', true); ?>">
+                      <input type="hidden" name="csrf" value="<?php echo $this->factory->getCsrfToken('update-profile'); ?>">
                       <span style="color: red;"><?php echo isset($csrf_err) ? $csrf_err : null; ?></span>
                     </div>
                     

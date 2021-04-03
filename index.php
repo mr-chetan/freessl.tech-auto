@@ -61,6 +61,7 @@
 
     // Define Directory Separator to make the default DIRECTORY_SEPARATOR short
     define('DS', DIRECTORY_SEPARATOR);
+    define( 'FSA_DEFAULT_ACME_VERSION', 2);
 
     $config_file_path = __DIR__.DS.'config'.DS.'config.php';
 

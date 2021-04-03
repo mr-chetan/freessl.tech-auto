@@ -161,19 +161,21 @@ class Factory
 
         if ($currentTime - $_SESSION['token_timestamp'] > 15 * 60) {
             //15 minutes exceeded, i.e., token expired
+            
             unset($_SESSION['token'], $_SESSION['token_timestamp']);
 
             return false;
         }
         if (hash_equals($generated_token, $token_returned)) {
             // verified
+            
             unset($_SESSION['token'], $_SESSION['token_timestamp']);
 
             return true;
         }
-
+        
         return false;
-        //Sorry! This form's security token expired or not valid. Please submit the form again.
+        //Sorry! This form's security token expired. Please submit the form again.
     }
 
     /**
